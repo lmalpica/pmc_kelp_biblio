@@ -21,7 +21,7 @@ rm(list = ls())
 #library(reshape2)
 library(dplyr)
 library(ggplot2)
-library(viridis)
+#library(viridis)
 
 #Custom theme for ggplot####
 theme_gg <- function(base_size = 11, base_family = "") {
@@ -73,6 +73,15 @@ ggplot(d, aes(Year, fill = Type)) +
   scale_fill_grey(name = "Categoría") +
   theme_gg()
 ggsave("figs/NumPubTime.pdf", width = 7, height = 5, useDingbats=FALSE)
+
+#Plot of # of type of publication overtime (distinguishes thesis)
+ggplot(d, aes(Year, fill = Subtype)) +
+  geom_histogram(col="white")+
+  xlab('Año de publicación') +
+  ylab('Número de publicaciones') +
+  scale_fill_grey(name = "Categoría") +
+  theme_gg()
+ggsave("figs/NumPubTimeSubtype.pdf", width = 7, height = 5, useDingbats=FALSE)
 
 ```
 
